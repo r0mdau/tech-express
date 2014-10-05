@@ -9,6 +9,9 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var techs = require('./routes/techs');
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/techs');
+
 var app = express();
 
 // view engine setup
