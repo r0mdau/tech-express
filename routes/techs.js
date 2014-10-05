@@ -20,24 +20,24 @@ router.post('/', function(req, res, next){
 });
 
 router.param('techId', function(req, res, next, techId){
-    console.log('param '+ techId);
-    var tech = null;
-    for (var i = techs.length - 1; i >= 0; i--) {
-        if(techs[i].id == techId){
-            req.tech = techs[i];
-            break;
-        };
-    };
-    return next();
+    var query = Tech.findById(techId);
+
+    query.exec(function(err, tech){
+        if(err){return next(err);}
+        if(!tech){res.status(404).json('no tech for this id');}
+        req.tech = tech;
+        return next();
+    });
 });
 
 router.post('/:techId/vote', function(req, res, next){
-    if(req.tech === null){
-        console.log('not found');
-        res.status(404).json({message:'not found'});
+    if(req.tech){
+        req.tech.vote(function(err, tech){
+            if(err){return next(err);}
+            res.status(201).json(tech);
+        }); 
     }
-    req.tech.votes = req.tech.votes +1;
-    res.json(req.tech);
+
 });
 
 module.exports = router;
