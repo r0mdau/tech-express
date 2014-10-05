@@ -1,15 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
-var techs = [{id: 1, name:'JavaScript', votes:3}, {id: 2,name:'Java', votes:2}];
+var mongoose = require('mongoose');
+var Tech = mongoose.model('Tech');
 
 router.get('/', function(req, res, next){
-    res.json(techs);
+    Tech.find(function(err, techs){
+        if(err){return next(err);}
+        res.json(techs);
+    })
 });
 
 router.post('/', function(req, res, next){
-    techs.push(req.body);
-    res.status(201).json(req.body);
+    var newTech = new Tech(req.body);
+    newTech.save(function(err, tech){
+        if(err){return next(err);}
+        res.status(201).json(tech);
+    })
 });
 
 router.param('techId', function(req, res, next, techId){
