@@ -1,0 +1,32 @@
+{
+  "name": "tech-express",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jollivetc/tech-express",
+  "authors": [
+    "Christophe Jollivet <christophe.jollivet@gmail.com>"
+  ],
+  "description": "Hands on Lab for MEAN stack.",
+  "main": "app.js",
+  "keywords": [
+    "Express",
+    "JS",
+    "AngularJS",
+    "MongoDB",
+    "NodeJS",
+    "Hands",
+    "on",
+    "Lab"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.26"
+  }
+}
