@@ -6,8 +6,15 @@ angular.module('TechApp',['ngResource'])
 		    newTech.$save();
 		    $scope.techs.push(newTech);
 		    $scope.newTechName='';
-		}
+		};
+		$scope.voteFor=function(tech){
+            var foo = tech.$voteFor().then(function(){
+                $scope.techs=Techs.query()
+            });
+        };
     }])
     .factory('Techs', ['$resource', function($resource){
-        return $resource('/techs/');
+        return $resource('/techs/:techId',{techId:'@_id'},{
+            'voteFor':{method:'POST', url:'/techs/:techId/vote'}
+        });
     }]);

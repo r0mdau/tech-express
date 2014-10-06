@@ -9,7 +9,7 @@
     <H1> Welcome to Tech Express </H1>
     <div>
       <ul>
-        <li ng-repeat="tech in techs">{{tech.name}} - votes : {{tech.votes}}</li>
+        <li ng-repeat="tech in techs">{{tech.name}} - votes : {{tech.votes}}  <button ng-click="voteFor(tech)">Vote for me</button></li>
       </ul>
     </div>
     <div>
