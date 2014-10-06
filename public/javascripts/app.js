@@ -1,4 +1,7 @@
-angular.module('TechApp',[])
-    .controller('MainCtrl', ['$scope',function($scope){
-        $scope.techs= [{name:'express', votes: 4},{name:'mongoDB', votes:3}];
+angular.module('TechApp',['ngResource'])
+    .controller('MainCtrl', ['$scope', 'Techs',function($scope, Techs){
+        $scope.techs=Techs.query();
+    }])
+    .factory('Techs', ['$resource', function($resource){
+        return $resource('/techs/');
     }]);
