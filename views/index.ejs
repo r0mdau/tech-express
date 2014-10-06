@@ -5,8 +5,11 @@
     <script src="/javascripts/app.js"></script>
   </head>
   <body ng-app="TechApp" ng-controller="MainCtrl">
+    <H1> Welcome to Tech Express </H1>
     <div>
-      {{test}}
+      <ul>
+        <li ng-repeat="tech in techs">{{tech.name}} - votes : {{tech.votes}}</li>
+      </ul>
     </div>
   </body>
 </html>
