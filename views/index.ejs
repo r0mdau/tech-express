@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tech Express</title>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/javascripts/app.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  </head>
+  <body ng-app="TechApp" ng-controller="MainCtrl">
+    <H1> Welcome to Tech Express </H1>
+    <div>
+      <ul>
+        <li ng-repeat="tech in techs">
+          {{tech.name}} - votes : {{tech.votes}}
+          <button ng-click="voteFor(tech)">Vote for me</button>
+          <button ng-click="unvoteFor(tech)">Unvote</button>
+          <button ng-click="del(tech)">Delete</button>
+        </li>
+      </ul>
+    </div>
+    <div>
+        <form ng-submit="addTech()">
+            <input type="text" placeholder="Tech" ng-model="newTechName"></input>
+            <br>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+  </body>
+</html>
